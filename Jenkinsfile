@@ -13,7 +13,7 @@ pipeline {
         //         script {
         //             def scannerHome = tool 'SonarQube';
         //             withSonarQubeEnv('SonarQube') {
-        //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=WhatTheDuck -Dsonar.sources=src"
+        //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ICT2216LabTest -Dsonar.sources=src"
         //             }
         //         }
         //     }

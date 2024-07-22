@@ -27,11 +27,8 @@ pipeline {
                     }
                 }
             }
-        }
 
-
-
-        stage('OWASP Dependency-Check Vulnerabilities') {
+         stage('OWASP Dependency-Check Vulnerabilities') {
   	        steps {
     	      dependencyCheck additionalArguments: '''
                 	-o './'
@@ -42,8 +39,7 @@ pipeline {
     	dependencyCheckPublisher pattern: 'dependency-check-report.xml'
   		}
 	}     
-
-    }
+        }
 
     post {
         always {
@@ -61,5 +57,4 @@ pipeline {
             echo "Pipline Failed!"
         }
     }
-
 }

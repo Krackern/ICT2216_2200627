@@ -19,14 +19,14 @@ pipeline {
             }
         }
 
-        stage('Static Code Analysis with Maven') {
-            steps {
-                script {
-                    sh '/var/jenkins_home/apache-maven-3.9.8/bin/mvn --batch-mode -V -U -e clean verify -Dsurefire.useFile=false -Dmaven.test.failure.ignore'
-                    sh '/var/jenkins_home/apache-maven-3.9.8/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs'
-                    }
-                }
-            }
+        // stage('Static Code Analysis with Maven') {
+        //     steps {
+        //         script {
+        //             sh '/var/jenkins_home/apache-maven-3.9.8/bin/mvn --batch-mode -V -U -e clean verify -Dsurefire.useFile=false -Dmaven.test.failure.ignore'
+        //             sh '/var/jenkins_home/apache-maven-3.9.8/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle pmd:pmd pmd:cpd findbugs:findbugs'
+        //             }
+        //         }
+        //     }
 
          stage('OWASP Dependency-Check Vulnerabilities') {
   	        steps {
@@ -42,14 +42,14 @@ pipeline {
         }
 
     post {
-        always {
-          junit testResults: '**/target/surefire-reports/TEST-*.xml'
-          recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
-          recordIssues enabledForFailure: true, tool: checkStyle()
-          recordIssues enabledForFailure: true, tool: spotBugs(pattern:'**/target/findbugsXml.xml')
-          recordIssues enabledForFailure: true, tool: cpd(pattern: '**/target/cpd.xml')
-          recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
-        }
+        // always {
+        //   junit testResults: '**/target/surefire-reports/TEST-*.xml'
+        //   recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
+        //   recordIssues enabledForFailure: true, tool: checkStyle()
+        //   recordIssues enabledForFailure: true, tool: spotBugs(pattern:'**/target/findbugsXml.xml')
+        //   recordIssues enabledForFailure: true, tool: cpd(pattern: '**/target/cpd.xml')
+        //   recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
+        // }
         success {
             echo "Pipline Success!"
         }

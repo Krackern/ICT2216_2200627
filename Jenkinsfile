@@ -8,16 +8,16 @@ pipeline {
             }
         }
          
-        // stage('Static Code Analysis with SonarQube') {
-        //     steps {
-        //         script {
-        //             def scannerHome = tool 'SonarQube';
-        //             withSonarQubeEnv('SonarQube') {
-        //             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ICT2216LabTest -Dsonar.sources=src"
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Static Code Analysis with SonarQube') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQube';
+                    withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ICT2216LabTest -Dsonar.sources=src"
+                    }
+                }
+            }
+        }
 
         stage('OWASP Dependency-Check Vulnerabilities') {
   	        steps {

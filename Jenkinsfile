@@ -2,11 +2,11 @@ pipeline {
      agent any
 
     stages {
-        stage('Checkout SCM') {
-            steps {
-                git(url: 'https://github.com/Krackern/ICT2216_2200627.git', branch: 'main')
-            }
-        }
+        // stage('Checkout SCM') {
+        //     steps {
+        //         git(url: 'https://github.com/Krackern/ICT2216_2200627.git', branch: 'main')
+        //     }
+        // }
          
         stage('Static Code Analysis with SonarQube') {
             steps {

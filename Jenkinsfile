@@ -28,11 +28,8 @@ pipeline {
                 	--prettyPrint''', odcInstallation: 'OWASP-Dependency-Check'
    	 
     	dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-  	}
-	}
-
-    
-     
+  		}
+	}     
          
     }
     
